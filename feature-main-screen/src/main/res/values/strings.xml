@@ -1,0 +1,10 @@
+<resources>
+    <string name="select_category">Select Category</string>
+    <string name="filter_options">Filter options</string>
+    <string name="brand">Brand</string>
+    <string name="price">Price</string>
+    <string name="size">Size</string>
+    <string name="hot_sales">Hot sales</string>
+    <string name="best_seller">Best seller</string>
+    <string name="buy_now_button">Buy now!</string>
+</resources>

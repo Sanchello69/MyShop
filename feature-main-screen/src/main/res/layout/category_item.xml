@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingLeft="27dp"
+    android:orientation="vertical">
+
+
+    <ImageButton
+        android:id="@+id/categoryImageView"
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_phone"
+        android:background="@drawable/circle_shape"
+        android:backgroundTint="@color/colorNotCategoryCircle"
+        app:tint="@color/colorNotCategoryItem" />
+
+    <TextView
+        android:id="@+id/categoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorNotCategoryText"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

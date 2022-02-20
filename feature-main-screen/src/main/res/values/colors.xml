@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorNotCategoryItem">#B3B3C3</color>
+    <color name="colorNotCategoryCircle">#FFFFFF</color>
+    <color name="colorNotCategoryText">#010035</color>
+
+    <color name="colorCategoryItem">#FFFFFF</color>
+    <color name="colorCategoryCircle">#FF6E4E</color>
+    <color name="colorCategoryText">#FF6E4E</color>
+
+    <color name="titleTextColor">#010035</color>
+
+    <color name="colorMain">#E5E5E5</color>
+
+    <color name="colorPriceTextView">#CCCCCC</color>
+
+    <color name="filterMainColor">#010035</color>
+    <color name="filterDoneMainColor">#FF6E4E</color>
+
+    <color name="newMainColor">#FF6E4E</color>
+
+    <color name="colorAccent">#03DAC5</color>
+</resources>
