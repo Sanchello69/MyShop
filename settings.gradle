@@ -1,3 +1,5 @@
 include ':feature-main-screen'
 include ':app'
 rootProject.name = "My Shop"
+include ':feature-product-details-screen'
+include ':core'
