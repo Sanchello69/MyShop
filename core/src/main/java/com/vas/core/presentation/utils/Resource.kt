@@ -1,4 +1,4 @@
-package com.vas.feature_main_screen.presentation.utils
+package com.vas.core.presentation.utils
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {

@@ -21,7 +21,7 @@ import com.vas.feature_main_screen.domain.model.HomeStore
 import com.vas.feature_main_screen.presentation.adapter.BestSellerAdapter
 import com.vas.feature_main_screen.presentation.adapter.CategoryAdapter
 import com.vas.feature_main_screen.presentation.adapter.HotSalesAdapter
-import com.vas.feature_main_screen.presentation.utils.Status
+import com.vas.core.presentation.utils.Status
 import kotlinx.android.synthetic.main.filter_layout.view.*
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.vas.feature_main_screen.presentation.utils
+package com.vas.core.presentation.utils
 
 enum class Status {
     SUCCESS,

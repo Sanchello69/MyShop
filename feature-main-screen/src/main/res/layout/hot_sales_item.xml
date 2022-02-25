@@ -44,7 +44,7 @@
             android:layout_marginTop="23dp"
             android:visibility="invisible"
             android:background="@drawable/circle_shape"
-            android:backgroundTint="@color/newMainColor"
+            android:backgroundTint="@color/colorPrimary"
             android:padding="5dp"
             android:src="@drawable/ic_resource_new"
             app:layout_constraintStart_toStartOf="parent"
