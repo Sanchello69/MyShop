@@ -2,6 +2,7 @@
 <resources>
 
     <color name="colorNotCategoryItem">#B3B3C3</color>
+    <color name="colorTextDetails">#B7B7C7</color>
     <color name="colorMain">#E5E5E5</color>
     <color name="colorPriceTextView">#CCCCCC</color>
 

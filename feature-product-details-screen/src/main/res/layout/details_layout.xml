@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="18dp"
+    android:backgroundTint="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Product details"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/likeImageView"
+            android:layout_width="37dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="37dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:padding="8dp"
+            android:src="@drawable/ic_no_like"
+            app:layout_constraintBottom_toBottomOf="@+id/titleTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/titleTextView" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="7dp"
+            android:isIndicator="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+        <ImageView
+            android:id="@+id/cameraImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/processorImageView"
+            app:layout_constraintEnd_toStartOf="@+id/ssdImageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/processorImageView"
+            app:layout_constraintTop_toTopOf="@+id/processorImageView"
+            app:srcCompat="@drawable/ic_camera" />
+
+        <ImageView
+            android:id="@+id/processorImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            app:layout_constraintEnd_toStartOf="@+id/cameraImageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            app:srcCompat="@drawable/ic_processor" />
+
+        <ImageView
+            android:id="@+id/sdImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/ssdImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ssdImageView"
+            app:layout_constraintTop_toTopOf="@+id/ssdImageView"
+            app:srcCompat="@drawable/ic_sd" />
+
+        <ImageView
+            android:id="@+id/ssdImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/cameraImageView"
+            app:layout_constraintEnd_toStartOf="@+id/sdImageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cameraImageView"
+            app:layout_constraintTop_toTopOf="@+id/cameraImageView"
+            app:srcCompat="@drawable/ic_ssd" />
+
+        <TextView
+            android:id="@+id/processorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="TextView"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/processorImageView"
+            app:layout_constraintStart_toStartOf="@+id/processorImageView"
+            app:layout_constraintTop_toBottomOf="@+id/processorImageView" />
+
+        <TextView
+            android:id="@+id/cameraTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="TextView"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/processorTextView"
+            app:layout_constraintEnd_toEndOf="@+id/cameraImageView"
+            app:layout_constraintStart_toStartOf="@+id/cameraImageView"
+            app:layout_constraintTop_toTopOf="@+id/processorTextView" />
+
+        <TextView
+            android:id="@+id/ssdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="TextView"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cameraTextView"
+            app:layout_constraintEnd_toEndOf="@+id/ssdImageView"
+            app:layout_constraintStart_toStartOf="@+id/ssdImageView"
+            app:layout_constraintTop_toTopOf="@+id/cameraTextView" />
+
+        <TextView
+            android:id="@+id/sdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="TextView"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ssdTextView"
+            app:layout_constraintEnd_toEndOf="@+id/sdImageView"
+            app:layout_constraintStart_toStartOf="@+id/sdImageView"
+            app:layout_constraintTop_toTopOf="@+id/ssdTextView" />
+
+        <TextView
+            android:id="@+id/selectTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/select_color_and_capacity"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/processorTextView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/colorRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectTextView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/capacityRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/colorRecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/colorRecyclerView"
+            app:layout_constraintTop_toTopOf="@+id/colorRecyclerView" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Add to Cart $1500"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/colorRecyclerView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
