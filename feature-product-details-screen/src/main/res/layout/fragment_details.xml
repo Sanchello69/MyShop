@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorMain"
     tools:context=".presentation.DetailsFragment">
-
-    <ImageView
-        android:id="@+id/closeImageView"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
-
-    <TextView
-        android:id="@+id/detailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="23sp"
-        android:text="Product details"
-        app:layout_constraintBottom_toBottomOf="@+id/closeImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/closeImageView" />
-
-    <ImageView
-        android:id="@+id/cartImageView"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@color/colorPrimary"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailsTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/detailsTextView"
-        app:srcCompat="@drawable/ic_cart" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/imagesViewPager"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cartImageView" />
+        android:layout_height="match_parent"
+        android:background="@color/colorMain">
 
-    <include
-        android:id="@+id/detailLayout"
-        layout="@layout/details_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/closeImageView"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/detailsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="23sp"
+            android:text="Product details"
+            app:layout_constraintBottom_toBottomOf="@+id/closeImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/closeImageView" />
+
+        <ImageView
+            android:id="@+id/cartImageView"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="@color/colorPrimary"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detailsTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detailsTextView"
+            app:srcCompat="@drawable/ic_cart" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/imagesViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cartImageView" />
+
+        <include
+            android:id="@+id/detailLayout"
+            layout="@layout/details_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
