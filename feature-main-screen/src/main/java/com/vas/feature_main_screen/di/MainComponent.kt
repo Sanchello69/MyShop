@@ -1,6 +1,7 @@
 package com.vas.feature_main_screen.di
 
 import androidx.lifecycle.ViewModel
+import com.vas.feature_main_screen.navigation.MainNavCommandProvider
 import com.vas.feature_main_screen.presentation.MainFragment
 import com.vas.feature_main_screen.presentation.MainViewModelFactory
 import dagger.Component
@@ -20,6 +21,7 @@ internal interface MainComponent {
 
 interface MainDeps {
     val mainViewModelFactory: MainViewModelFactory
+    val mainNavCommandProvider: MainNavCommandProvider
 }
 
 internal class MainComponentViewModel : ViewModel(){

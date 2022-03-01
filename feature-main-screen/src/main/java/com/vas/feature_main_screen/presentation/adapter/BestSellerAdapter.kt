@@ -29,6 +29,7 @@ class BestSellerAdapter(var context: Context): RecyclerView.Adapter<ItemBestSell
 
     interface OnBestSellerClickListener {
         fun onLikeClick(bestSeller: BestSeller)
+        fun onItemClick(title: String)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemBestSellerViewHolder =
@@ -90,6 +91,10 @@ class ItemBestSellerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
 
         likeImage.setOnClickListener {
             onBestSellerClickListener.onLikeClick(item)
+        }
+
+        picturePhone.setOnClickListener {
+            onBestSellerClickListener.onItemClick(item.title)
         }
     }
 

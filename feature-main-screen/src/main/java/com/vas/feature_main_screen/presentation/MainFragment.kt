@@ -22,6 +22,9 @@ import com.vas.feature_main_screen.presentation.adapter.BestSellerAdapter
 import com.vas.feature_main_screen.presentation.adapter.CategoryAdapter
 import com.vas.feature_main_screen.presentation.adapter.HotSalesAdapter
 import com.vas.core.presentation.utils.Status
+import com.vas.feature_main_screen.navigation.MainNavCommandProvider
+import com.vas.navigation.NavCommand
+import com.vas.navigation.navigate
 import kotlinx.android.synthetic.main.filter_layout.view.*
 import javax.inject.Inject
 
@@ -29,6 +32,11 @@ class MainFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: MainViewModelFactory
+
+    @Inject
+    lateinit var mainNavCommandProvider: MainNavCommandProvider
+
+    private val bundle = Bundle()
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var viewModel: MainViewModel
@@ -183,6 +191,13 @@ class MainFragment : Fragment() {
             override fun onLikeClick(bestSeller: BestSeller) {
                 //должна быть какая то отправка данных, что он favorite (not favorite)
                 Toast.makeText(context, "Click ${bestSeller.title}", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onItemClick(title: String) {
+                bundle.putString("title", title)
+                navigate(NavCommand(
+                    action = mainNavCommandProvider.toDetails.action,
+                    args = bundle))
             }
         }
     }

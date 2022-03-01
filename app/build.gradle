@@ -49,6 +49,11 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.40.1'
     implementation 'javax.inject:javax.inject:1'
 
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+
     implementation project(path: ':feature-main-screen')
+    implementation project(path: ':feature-product-details-screen')
+    implementation project(path: ':navigation')
 
 }
