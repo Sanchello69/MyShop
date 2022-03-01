@@ -4,7 +4,7 @@ import com.vas.core.data.network.api.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitDetailsClient {
+object RetrofitDetailsClient {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()

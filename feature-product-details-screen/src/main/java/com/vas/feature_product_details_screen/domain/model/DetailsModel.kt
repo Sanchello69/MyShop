@@ -22,6 +22,6 @@ data class DetailsModel(
 
     val color: List<String>,
 
-    val capacity: String
+    val capacity: List<String>
 
 )

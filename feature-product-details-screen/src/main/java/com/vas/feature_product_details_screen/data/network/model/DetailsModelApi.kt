@@ -1,7 +1,10 @@
 package com.vas.feature_product_details_screen.data.network.model
 
+import com.google.gson.annotations.SerializedName
+
 data class DetailsModelApi(
 
+    @SerializedName("CPU")
     val cpu: String,
 
     val camera: String,
@@ -22,6 +25,6 @@ data class DetailsModelApi(
 
     val color: List<String>,
 
-    val capacity: String
+    val capacity: List<String>
 
 )
