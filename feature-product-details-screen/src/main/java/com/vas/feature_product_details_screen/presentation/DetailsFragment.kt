@@ -11,11 +11,18 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.viewpager2.widget.ViewPager2
 import com.vas.core.presentation.utils.Status
 import com.vas.feature_product_details_screen.R
 import com.vas.feature_product_details_screen.databinding.FragmentDetailsBinding
 import com.vas.feature_product_details_screen.di.DetailsComponentViewModel
+import com.vas.feature_product_details_screen.domain.model.DetailsModel
+import com.vas.feature_product_details_screen.presentation.adapter.CapacityAdapter
+import com.vas.feature_product_details_screen.presentation.adapter.ColorAdapter
+import com.vas.feature_product_details_screen.presentation.adapter.ImageAdapter
 import kotlinx.android.synthetic.main.details_layout.view.*
+import kotlinx.android.synthetic.main.fragment_details.view.*
+import java.lang.Math.abs
 import javax.inject.Inject
 
 class DetailsFragment : Fragment() {
@@ -25,6 +32,10 @@ class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var viewModel: DetailsViewModel
+
+    private var adapterColor: ColorAdapter = ColorAdapter()
+    private var adapterCapacity: CapacityAdapter = CapacityAdapter()
+    private lateinit var adapterImage: ImageAdapter
 
     override fun onAttach(context: Context) {
         ViewModelProvider(this).get<DetailsComponentViewModel>()
@@ -55,7 +66,9 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setupUI() {
-
+        initColorRecyclerView()
+        initCapacityRecyclerView()
+        initImageViewPager()
     }
 
     private fun setupObservers() {
@@ -69,20 +82,7 @@ class DetailsFragment : Fragment() {
                         Log.d("status", "SUCCESS")
                         Log.d("status", "${it.data}")
 
-                        binding.detailLayout.titleTextView.text = it.data!!.title
-                        binding.detailLayout.cameraTextView.text = it.data!!.camera
-                        binding.detailLayout.processorTextView.text = it.data!!.cpu
-                        binding.detailLayout.sdTextView.text = it.data!!.sd
-                        binding.detailLayout.ssdTextView.text = it.data!!.ssd
-
-                        binding.detailLayout.ratingBar.rating = it.data!!.rating.toFloat()
-
-                        binding.detailLayout.likeImageView.setImageResource(
-                            if (it.data!!.isFavorites)
-                                R.drawable.ic_like
-                            else
-                                R.drawable.ic_no_like
-                        )
+                        loadingUI(it.data!!)
                     }
                     Status.ERROR -> {
                         Log.d("status", "ERROR ${it.message}")
@@ -93,5 +93,76 @@ class DetailsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun loadingUI(data: DetailsModel) {
+
+        binding.detailLayout.apply {
+            titleTextView.text = data.title
+            cameraTextView.text = data.camera
+            processorTextView.text = data.cpu
+            sdTextView.text = data.sd
+            ssdTextView.text = data.ssd
+
+            ratingBar.rating = data.rating.toFloat()
+
+            likeImageView.setImageResource(
+                if (data.isFavorites)
+                    R.drawable.ic_like
+                else
+                    R.drawable.ic_no_like
+            )
+        }
+
+        adapterColor.data = data.color
+        adapterCapacity.data = data.capacity
+        adapterImage.data = data.images
+    }
+
+    private fun initColorRecyclerView() {
+
+        binding.detailLayout.colorRecyclerView.adapter = adapterColor
+
+        adapterColor.onClickListener = object : ColorAdapter.OnColorClickListener{
+            override fun onColorClick(item: String, position: Int) {
+                adapterColor.clickPosition = position
+                adapterColor.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun initCapacityRecyclerView() {
+
+        binding.detailLayout.capacityRecyclerView.adapter = adapterCapacity
+
+        adapterCapacity.onClickListener = object : CapacityAdapter.OnCapacityClickListener{
+            override fun onCapacityClick(item: String, position: Int) {
+                adapterCapacity.clickPosition = position
+                adapterCapacity.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun initImageViewPager() {
+        adapterImage = ImageAdapter(requireContext())
+
+        binding.imagesViewPager.adapter = adapterImage
+
+        binding.imagesViewPager.offscreenPageLimit = 1
+
+        val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
+        val currentItemHorizontalMarginPx = resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+        val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
+        val pageTransformer = ViewPager2.PageTransformer { page: View, position: Float ->
+            page.translationX = -pageTranslationX * position
+            page.scaleY = 1 - (0.25f * abs(position))
+        }
+        binding.imagesViewPager.setPageTransformer(pageTransformer)
+
+        val itemDecoration = HorizontalMarginItemDecoration(
+            requireContext(),
+            R.dimen.viewpager_current_item_horizontal_margin
+        )
+        binding.imagesViewPager.addItemDecoration(itemDecoration)
     }
 }

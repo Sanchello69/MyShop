@@ -38,7 +38,7 @@
             android:id="@+id/cartImageView"
             android:layout_width="37dp"
             android:layout_height="37dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="35dp"
             android:background="@drawable/rectangle"
             android:backgroundTint="@color/colorPrimary"
             android:padding="10dp"
@@ -50,10 +50,10 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/imagesViewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/detailLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cartImageView" />
 
