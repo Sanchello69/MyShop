@@ -8,4 +8,7 @@ import javax.inject.Inject
 class MainNavCommandProviderImpl @Inject constructor() : MainNavCommandProvider {
     override val toDetails: NavCommand =
         NavCommand(R.id.action_mainFragment_to_detailsFragment)
+
+    override val toCart: NavCommand =
+        NavCommand(R.id.action_mainFragment_to_myCartFragment)
 }

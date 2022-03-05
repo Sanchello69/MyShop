@@ -25,6 +25,7 @@ import com.vas.core.presentation.utils.Status
 import com.vas.feature_main_screen.navigation.MainNavCommandProvider
 import com.vas.navigation.NavCommand
 import com.vas.navigation.navigate
+import kotlinx.android.synthetic.main.bottom_navigation.view.*
 import kotlinx.android.synthetic.main.filter_layout.view.*
 import javax.inject.Inject
 
@@ -79,6 +80,7 @@ class MainFragment : Fragment() {
         initBrandSpinner()
         initPriceSpinner()
         initSizeSpinner()
+        initBottomButtonCart()
     }
 
     private fun setupObservers() {
@@ -199,6 +201,12 @@ class MainFragment : Fragment() {
                     action = mainNavCommandProvider.toDetails.action,
                     args = bundle))
             }
+        }
+    }
+
+    private fun initBottomButtonCart() {
+        binding.bottomNavigation.cartImageView.setOnClickListener {
+            navigate(mainNavCommandProvider.toCart)
         }
     }
 }

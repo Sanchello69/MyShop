@@ -45,7 +45,7 @@ class ItemCartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     fun bind(item: BasketModel, context: Context) {
 
         titleTextView.text = item.title
-        priceTextView.text = item.price.toString()
+        priceTextView.text = "$${item.price}"
 
         Glide
             .with(context)
