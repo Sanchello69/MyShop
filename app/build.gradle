@@ -54,6 +54,7 @@ dependencies {
 
     implementation project(path: ':feature-main-screen')
     implementation project(path: ':feature-product-details-screen')
+    implementation project(path: ':feature-cart-screen')
     implementation project(path: ':navigation')
 
 }

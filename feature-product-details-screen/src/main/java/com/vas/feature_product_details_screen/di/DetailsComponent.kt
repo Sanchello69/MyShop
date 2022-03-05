@@ -1,6 +1,7 @@
 package com.vas.feature_product_details_screen.di
 
 import androidx.lifecycle.ViewModel
+import com.vas.feature_product_details_screen.navigation.DetailsNavCommandProvider
 import com.vas.feature_product_details_screen.presentation.DetailsFragment
 import com.vas.feature_product_details_screen.presentation.DetailsViewModelFactory
 import dagger.Component
@@ -20,6 +21,7 @@ internal interface DetailsComponent {
 
 interface DetailsDeps {
     val detailsViewModelFactory: DetailsViewModelFactory
+    val detailsNavCommandProvider: DetailsNavCommandProvider
 }
 
 internal class DetailsComponentViewModel : ViewModel(){

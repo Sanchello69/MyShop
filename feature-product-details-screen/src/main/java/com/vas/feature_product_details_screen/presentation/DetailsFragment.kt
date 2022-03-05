@@ -11,17 +11,19 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2
 import com.vas.core.presentation.utils.Status
 import com.vas.feature_product_details_screen.R
 import com.vas.feature_product_details_screen.databinding.FragmentDetailsBinding
 import com.vas.feature_product_details_screen.di.DetailsComponentViewModel
 import com.vas.feature_product_details_screen.domain.model.DetailsModel
+import com.vas.feature_product_details_screen.navigation.DetailsNavCommandProvider
 import com.vas.feature_product_details_screen.presentation.adapter.CapacityAdapter
 import com.vas.feature_product_details_screen.presentation.adapter.ColorAdapter
 import com.vas.feature_product_details_screen.presentation.adapter.ImageAdapter
+import com.vas.navigation.navigate
 import kotlinx.android.synthetic.main.details_layout.view.*
-import kotlinx.android.synthetic.main.fragment_details.view.*
 import java.lang.Math.abs
 import javax.inject.Inject
 
@@ -29,6 +31,9 @@ class DetailsFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: DetailsViewModelFactory
+
+    @Inject
+    lateinit var detailsNavCommandProvider: DetailsNavCommandProvider
 
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var viewModel: DetailsViewModel
@@ -69,6 +74,8 @@ class DetailsFragment : Fragment() {
         initColorRecyclerView()
         initCapacityRecyclerView()
         initImageViewPager()
+        initBackButton()
+        initCartButton()
     }
 
     private fun setupObservers() {
@@ -113,6 +120,8 @@ class DetailsFragment : Fragment() {
                     R.drawable.ic_no_like
             )
         }
+
+        binding.detailLayout.addToCartButton.text = "Add to Cart $${data.price}"
 
         adapterColor.data = data.color
         adapterCapacity.data = data.capacity
@@ -164,5 +173,17 @@ class DetailsFragment : Fragment() {
             R.dimen.viewpager_current_item_horizontal_margin
         )
         binding.imagesViewPager.addItemDecoration(itemDecoration)
+    }
+
+    private fun initBackButton() {
+        binding.backImageView.setOnClickListener {
+            Navigation.findNavController(it).popBackStack()
+        }
+    }
+
+    private fun initCartButton() {
+        binding.cartImageView.setOnClickListener {
+            navigate(detailsNavCommandProvider.toCart)
+        }
     }
 }

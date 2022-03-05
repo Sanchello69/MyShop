@@ -4,3 +4,4 @@ rootProject.name = "My Shop"
 include ':feature-product-details-screen'
 include ':core'
 include ':navigation'
+include ':feature-cart-screen'

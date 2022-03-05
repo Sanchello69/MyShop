@@ -1,6 +1,7 @@
 package com.vas.myshop.app
 
 import android.app.Application
+import com.vas.feature_cart_screen.di.CartDepsStore
 import com.vas.feature_main_screen.di.MainDepsStore
 import com.vas.feature_product_details_screen.di.DetailsDepsStore
 import com.vas.myshop.di.AppComponent
@@ -17,5 +18,6 @@ class App : Application(){
 
         MainDepsStore.deps = appComponent
         DetailsDepsStore.deps = appComponent
+        CartDepsStore.deps = appComponent
     }
 }

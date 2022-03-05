@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/79961/Desktop/MyShop/feature-cart-screen/src/main/res/drawable/ic_back.xml" value="0.1685" />
+        <entry key="..\:/Users/79961/Desktop/MyShop/feature-cart-screen/src/main/res/drawable/rectangle.xml" value="0.1685" />
+        <entry key="..\:/Users/79961/Desktop/MyShop/feature-cart-screen/src/main/res/drawable/separator.xml" value="0.1685" />
+        <entry key="..\:/Users/79961/Desktop/MyShop/feature-cart-screen/src/main/res/layout/cart_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/79961/Desktop/MyShop/feature-cart-screen/src/main/res/layout/fragment_my_cart.xml" value="0.264" />
         <entry key="..\:/Users/79961/Desktop/MyShop/feature-main-screen/src/main/res/drawable/button_rectangle.xml" value="0.1335" />
         <entry key="..\:/Users/79961/Desktop/MyShop/feature-main-screen/src/main/res/drawable/gradient_picture.xml" value="0.1335" />
         <entry key="..\:/Users/79961/Desktop/MyShop/feature-main-screen/src/main/res/drawable/ic_books.xml" value="0.1335" />

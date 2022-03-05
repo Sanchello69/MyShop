@@ -1,5 +1,9 @@
 package com.vas.myshop.di
 
+import com.vas.feature_cart_screen.data.network.api.ApiCartHelper
+import com.vas.feature_cart_screen.data.network.api.RetrofitCartClient
+import com.vas.feature_cart_screen.data.repository.CartRepositoryImpl
+import com.vas.feature_cart_screen.domain.repository.CartRepository
 import com.vas.feature_main_screen.data.network.api.ApiHelper
 import com.vas.feature_main_screen.data.network.api.RetrofitClient
 import com.vas.feature_main_screen.data.repository.MainRepositoryImpl
@@ -37,4 +41,15 @@ class DataModule {
         return DetailsRepositoryImpl(apiHelper = apiHelper)
     }
 
+
+    //cart
+    @Provides
+    fun provideCartApiHelper(): ApiCartHelper{
+        return ApiCartHelper(RetrofitCartClient.apiInterface)
+    }
+
+    @Provides
+    fun provideCartRepository(apiHelper: ApiCartHelper): CartRepository{
+        return CartRepositoryImpl(apiHelper = apiHelper)
+    }
 }

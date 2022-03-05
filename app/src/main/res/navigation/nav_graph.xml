@@ -11,9 +11,20 @@
         <action
             android:id="@+id/action_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.vas.feature_product_details_screen.presentation.DetailsFragment"
-        android:label="DetailsFragment" />
+        android:label="DetailsFragment" >
+        <action
+            android:id="@+id/action_detailsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCartFragment"
+        android:name="com.vas.feature_cart_screen.presentation.MyCartFragment"
+        android:label="MyCartFragment" />
 </navigation>

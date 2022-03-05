@@ -9,7 +9,7 @@
         android:background="@color/colorMain">
 
         <ImageView
-            android:id="@+id/closeImageView"
+            android:id="@+id/backImageView"
             android:layout_width="37dp"
             android:layout_height="37dp"
             android:layout_marginStart="44dp"
@@ -19,7 +19,7 @@
             android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_close" />
+            app:srcCompat="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/detailsTextView"
@@ -29,10 +29,10 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="23sp"
             android:text="Product details"
-            app:layout_constraintBottom_toBottomOf="@+id/closeImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/backImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/closeImageView" />
+            app:layout_constraintTop_toTopOf="@+id/backImageView" />
 
         <ImageView
             android:id="@+id/cartImageView"
