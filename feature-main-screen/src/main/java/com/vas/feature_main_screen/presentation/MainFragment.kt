@@ -81,6 +81,7 @@ class MainFragment : Fragment() {
         initPriceSpinner()
         initSizeSpinner()
         initBottomButtonCart()
+        initLocationButton()
     }
 
     private fun setupObservers() {
@@ -207,6 +208,12 @@ class MainFragment : Fragment() {
     private fun initBottomButtonCart() {
         binding.bottomNavigation.cartImageView.setOnClickListener {
             navigate(mainNavCommandProvider.toCart)
+        }
+    }
+
+    private fun initLocationButton() {
+        binding.locationImageView.setOnClickListener {
+            navigate(mainNavCommandProvider.toMaps)
         }
     }
 }

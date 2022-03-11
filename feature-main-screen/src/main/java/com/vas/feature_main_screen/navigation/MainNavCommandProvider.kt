@@ -5,4 +5,5 @@ import com.vas.navigation.NavCommand
 interface MainNavCommandProvider {
     val toDetails: NavCommand
     val toCart: NavCommand
+    val toMaps: NavCommand
 }

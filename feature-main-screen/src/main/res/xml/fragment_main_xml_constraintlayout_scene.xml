@@ -30,6 +30,12 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:elevation="5dp"/>
+        <Constraint
+            motion:layout_constraintEnd_toStartOf="@+id/filterImageView"
+            android:id="@+id/locationImageView"
+            motion:layout_constraintBottom_toBottomOf="@+id/filterImageView"
+            motion:layout_constraintTop_toTopOf="@+id/filterImageView"
+            motion:layout_constraintStart_toEndOf="@+id/textViewSelectCategory" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -88,6 +94,13 @@
             motion:layout_constraintTop_toTopOf="@+id/textViewSelectCategory"
             android:visibility="invisible" />
         <Constraint
+            motion:layout_constraintEnd_toStartOf="@+id/filterImageView"
+            android:id="@+id/locationImageView"
+            motion:layout_constraintBottom_toBottomOf="@+id/filterImageView"
+            motion:layout_constraintTop_toTopOf="@+id/filterImageView"
+            motion:layout_constraintStart_toEndOf="@+id/textViewSelectCategory"
+            android:visibility="invisible"/>
+        <Constraint
             android:id="@+id/filterImageView"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
@@ -134,6 +147,12 @@
             android:elevation="5dp"/>
     </ConstraintSet>
     <ConstraintSet android:id="@+id/filter" >
+        <Constraint
+            motion:layout_constraintEnd_toStartOf="@+id/filterImageView"
+            android:id="@+id/locationImageView"
+            motion:layout_constraintBottom_toBottomOf="@+id/filterImageView"
+            motion:layout_constraintTop_toTopOf="@+id/filterImageView"
+            motion:layout_constraintStart_toEndOf="@+id/textViewSelectCategory" />
         <Constraint
             android:id="@+id/bestSellerRecyclerView"
             motion:layout_constraintEnd_toEndOf="parent"

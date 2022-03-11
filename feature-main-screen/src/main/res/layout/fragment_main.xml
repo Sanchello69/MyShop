@@ -115,6 +115,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageView
+                android:id="@+id/locationImageView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_location"
+                android:padding="2dp"/>
         </androidx.constraintlayout.motion.widget.MotionLayout>
     </ScrollView>
 </layout>

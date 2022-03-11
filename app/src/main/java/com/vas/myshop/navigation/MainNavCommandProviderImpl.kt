@@ -11,4 +11,7 @@ class MainNavCommandProviderImpl @Inject constructor() : MainNavCommandProvider 
 
     override val toCart: NavCommand =
         NavCommand(R.id.action_mainFragment_to_myCartFragment)
+
+    override val toMaps: NavCommand =
+        NavCommand(R.id.action_mainFragment_to_mapsFragment)
 }

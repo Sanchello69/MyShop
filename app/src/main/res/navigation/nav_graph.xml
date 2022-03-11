@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_mainFragment_to_myCartFragment"
             app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -27,4 +30,8 @@
         android:id="@+id/myCartFragment"
         android:name="com.vas.feature_cart_screen.presentation.MyCartFragment"
         android:label="MyCartFragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.vas.feature_location_screen.MapsFragment"
+        android:label="MapsFragment" />
 </navigation>

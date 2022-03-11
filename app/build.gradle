@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin:  "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
 
 android {
     compileSdkVersion 31
@@ -56,5 +57,6 @@ dependencies {
     implementation project(path: ':feature-product-details-screen')
     implementation project(path: ':feature-cart-screen')
     implementation project(path: ':navigation')
+    implementation project(path: ':feature-location-screen')
 
 }
