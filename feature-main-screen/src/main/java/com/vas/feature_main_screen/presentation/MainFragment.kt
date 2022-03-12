@@ -22,6 +22,7 @@ import com.vas.feature_main_screen.presentation.adapter.BestSellerAdapter
 import com.vas.feature_main_screen.presentation.adapter.CategoryAdapter
 import com.vas.feature_main_screen.presentation.adapter.HotSalesAdapter
 import com.vas.core.presentation.utils.Status
+import com.vas.core.utils.Result
 import com.vas.feature_main_screen.navigation.MainNavCommandProvider
 import com.vas.navigation.NavCommand
 import com.vas.navigation.navigate
@@ -85,22 +86,20 @@ class MainFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.getMain().observe(viewLifecycleOwner, Observer {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        Log.d("status", "SUCCESS")
-                        Log.d("status", "${it.data}")
-                        adapterHotSales.data = it.data!!.listHomeStore
-                        adapterBestSeller.data = it.data!!.listBestSeller
-                    }
-                    Status.ERROR -> {
-                        Log.d("status", "ERROR ${it.message}")
-                    }
-                    Status.LOADING -> {
-                        Log.d("status",  "LOADING")
-                    }
+        viewModel.main.observe(viewLifecycleOwner, Observer { result ->
+            when (result.status) {
+                Result.Status.SUCCESS -> {
+
+                    Log.d("status", "SUCCESS")
+
+                    result.data?.let { if (it.isNotEmpty()){
+                        adapterHotSales.data = it.last().listHomeStore
+                        adapterBestSeller.data = it.last().listBestSeller
+                    } }
+
                 }
+                Result.Status.LOADING -> Log.d("status", "LOADING")
+                Result.Status.ERROR -> Log.d("status", "ERROR")
             }
         })
     }

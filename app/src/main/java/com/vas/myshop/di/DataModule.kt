@@ -6,6 +6,7 @@ import com.vas.feature_cart_screen.data.network.api.ApiCartHelper
 import com.vas.feature_cart_screen.data.network.api.RetrofitCartClient
 import com.vas.feature_cart_screen.data.repository.CartRepositoryImpl
 import com.vas.feature_cart_screen.domain.repository.CartRepository
+import com.vas.feature_main_screen.data.local.dao.MainDao
 import com.vas.feature_main_screen.data.network.api.ApiHelper
 import com.vas.feature_main_screen.data.network.api.RetrofitClient
 import com.vas.feature_main_screen.data.repository.MainRepositoryImpl
@@ -28,8 +29,13 @@ class DataModule {
     }
 
     @Provides
-    fun provideMainRepository(apiHelper: ApiHelper): MainRepository{
-        return MainRepositoryImpl(apiHelper = apiHelper)
+    fun provideDao(context: Context): MainDao{
+        return LocalDatabase.getDatabase(context).getMainDao()
+    }
+
+    @Provides
+    fun provideMainRepository(dao: MainDao, apiHelper: ApiHelper): MainRepository{
+        return MainRepositoryImpl(dao = dao, apiHelper = apiHelper)
     }
 
 
@@ -42,7 +48,7 @@ class DataModule {
 
     @Provides
     fun provideDetailsDao(context: Context): DetailsDao{
-        return LocalDatabase.getDatabase(context).getMainDao()
+        return LocalDatabase.getDatabase(context).getDetailsDao()
     }
 
     @Provides

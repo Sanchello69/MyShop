@@ -7,15 +7,19 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.vas.feature_cart_screen.data.local.dao.CartDao
 import com.vas.feature_cart_screen.data.local.entity.CartModelLocal
+import com.vas.feature_main_screen.data.local.dao.MainDao
+import com.vas.feature_main_screen.data.local.entity.MainModelLocal
 import com.vas.feature_product_details_screen.data.local.dao.DetailsDao
 import com.vas.feature_product_details_screen.data.local.entity.DetailsModelLocal
 
-@Database(entities = [DetailsModelLocal::class, CartModelLocal::class], version = 1, exportSchema = false)
+@Database(entities = [DetailsModelLocal::class, CartModelLocal::class, MainModelLocal::class],
+    version = 1, exportSchema = false)
 @TypeConverters(DataClass::class)
 abstract class LocalDatabase : RoomDatabase() {
 
-    abstract fun getMainDao(): DetailsDao
+    abstract fun getDetailsDao(): DetailsDao
     abstract fun getCartDao(): CartDao
+    abstract fun getMainDao(): MainDao
 
     companion object {
         @Volatile private var instance: LocalDatabase? = null
