@@ -5,6 +5,7 @@ import com.vas.feature_cart_screen.di.CartDepsStore
 import com.vas.feature_main_screen.di.MainDepsStore
 import com.vas.feature_product_details_screen.di.DetailsDepsStore
 import com.vas.myshop.di.AppComponent
+import com.vas.myshop.di.AppModule
 import com.vas.myshop.di.DaggerAppComponent
 
 class App : Application(){
@@ -14,7 +15,7 @@ class App : Application(){
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerAppComponent.builder().appModule(AppModule(context = this)).build()
 
         MainDepsStore.deps = appComponent
         DetailsDepsStore.deps = appComponent

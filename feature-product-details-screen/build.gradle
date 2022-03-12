@@ -66,8 +66,21 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.40.1'
     implementation 'javax.inject:javax.inject:1'
 
+    //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+
+    //Room
+
+    implementation("androidx.room:room-runtime:2.4.2")
+    annotationProcessor("androidx.room:room-compiler:2.4.2")
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:2.4.2")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.4.2")
+
 
     implementation project(path: ':core')
     implementation project(path: ':navigation')

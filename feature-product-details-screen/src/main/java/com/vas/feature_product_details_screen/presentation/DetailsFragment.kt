@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2
-import com.vas.core.presentation.utils.Status
 import com.vas.feature_product_details_screen.R
 import com.vas.feature_product_details_screen.databinding.FragmentDetailsBinding
 import com.vas.feature_product_details_screen.di.DetailsComponentViewModel
@@ -26,6 +25,7 @@ import com.vas.navigation.navigate
 import kotlinx.android.synthetic.main.details_layout.view.*
 import java.lang.Math.abs
 import javax.inject.Inject
+import com.vas.core.utils.Result
 
 class DetailsFragment : Fragment() {
 
@@ -82,21 +82,18 @@ class DetailsFragment : Fragment() {
         //по сути здесь мы должны передавать arguments?.getString("title") в метод getDetails(),
         //чтобы получить от API детали конкретной модели товара, но в API подробная информация есть
         //только по одной модели, поэтому метод getDetails() без аргументов
-        viewModel.getDetails().observe(viewLifecycleOwner, Observer {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        Log.d("status", "SUCCESS")
-                        Log.d("status", "${it.data}")
+        viewModel.details.observe(viewLifecycleOwner, Observer { result ->
+            when (result.status) {
+                Result.Status.SUCCESS -> {
 
-                        loadingUI(it.data!!)
-                    }
-                    Status.ERROR -> {
-                        Log.d("status", "ERROR ${it.message}")
-                    }
-                    Status.LOADING -> {
-                        Log.d("status",  "LOADING")
-                    }
+                    Log.d("status", "SUCCESS")
+
+                    result.data?.let { if (it.isNotEmpty()) loadingUI( it.last()) }
+
+                }
+                Result.Status.LOADING -> Log.d("status", "LOADING")
+                Result.Status.ERROR -> {
+                    Log.d("status", "ERROR")
                 }
             }
         })

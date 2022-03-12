@@ -1,5 +1,6 @@
 package com.vas.myshop.di
 
+import android.content.Context
 import com.vas.feature_cart_screen.domain.useCase.GetCartUseCase
 import com.vas.feature_cart_screen.presentation.CartViewModelFactory
 import com.vas.feature_main_screen.domain.useCase.GetMainUseCase
@@ -10,7 +11,13 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule {
+class AppModule (val context: Context) {
+
+
+    @Provides
+    fun provideContext() : Context{
+        return context
+    }
 
     //main
     @Provides

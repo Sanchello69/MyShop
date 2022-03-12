@@ -1,36 +1,60 @@
 package com.vas.feature_product_details_screen.data.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
+import com.vas.feature_product_details_screen.data.local.dao.DetailsDao
+import com.vas.feature_product_details_screen.data.local.entities.DetailsModelLocal
 import com.vas.feature_product_details_screen.data.network.api.ApiDetailsHelper
-import com.vas.feature_product_details_screen.data.network.model.DetailsModelApi
 import com.vas.feature_product_details_screen.domain.model.DetailsModel
 import com.vas.feature_product_details_screen.domain.repository.DetailsRepository
+import com.vas.core.utils.Result
+import com.vas.core.utils.resultLiveData
 
-class DetailsRepositoryImpl(private val apiHelper: ApiDetailsHelper) : DetailsRepository {
+class DetailsRepositoryImpl(private val dao: DetailsDao,
+                            private val apiHelper: ApiDetailsHelper) : DetailsRepository {
 
-    override suspend fun getDetailsResult(): DetailsModel {
-        val detailsModelApi = apiHelper.getDetailsResult()
-
-        //возвращаем данные
-        return mapToDomain(detailsModelApi)
+    private val details = resultLiveData(
+        databaseQuery = { dao.getDetails() },
+        networkCall = { apiHelper.getDetailsResult() },
+        saveCallResult = { dao.insertAllDetails(it.map {
+            DetailsModelLocal(
+                id = 0,
+                cpu = it.cpu,
+                camera = it.camera,
+                isFavorites = it.isFavorites,
+                price = it.price,
+                rating = it.rating,
+                sd = it.sd,
+                ssd = it.ssd,
+                title = it.title,
+                images = it.images,
+                color = it.color,
+                capacity = it.capacity
+            )
+        }) }).map{
+            Result<List<DetailsModel>>(
+                status = it.status,
+                data = it.data?.map {
+                    DetailsModel(
+                        cpu = it.cpu,
+                        camera = it.camera,
+                        isFavorites = it.isFavorites,
+                        price = it.price,
+                        rating = it.rating,
+                        sd = it.sd,
+                        ssd = it.ssd,
+                        title = it.title,
+                        images = it.images,
+                        color = it.color,
+                        capacity = it.capacity
+                    )
+                },
+                message = it.message
+            )
     }
 
-    private fun mapToDomain(listDetailsModelApi: List<DetailsModelApi>): DetailsModel {
-
-        val detailsModelApi = listDetailsModelApi.last()
-
-        return DetailsModel(
-            cpu = detailsModelApi.cpu,
-            camera = detailsModelApi.camera,
-            isFavorites = detailsModelApi.isFavorites,
-            price = detailsModelApi.price,
-            rating = detailsModelApi.rating,
-            sd = detailsModelApi.sd,
-            ssd = detailsModelApi.ssd,
-            title = detailsModelApi.title,
-            images = detailsModelApi.images,
-            color = detailsModelApi.color,
-            capacity = detailsModelApi.capacity
-        )
+    override fun getDetailsResult(): LiveData<Result<List<DetailsModel>>> {
+        return details
     }
 
 }

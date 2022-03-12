@@ -13,6 +13,7 @@ internal interface DetailsComponent {
 
     @Component.Builder
     interface Builder {
+
         fun deps(deps: DetailsDeps): Builder
 
         fun build(): DetailsComponent
