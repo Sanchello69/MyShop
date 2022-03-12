@@ -1,6 +1,8 @@
 package com.vas.feature_product_details_screen.data.network.api
 
-class ApiDetailsHelper(private val apiInterface: ApiDetailsInterface) {
+import com.vas.core.utils.BaseDataSource
+
+class ApiDetailsHelper(private val apiInterface: ApiDetailsInterface) : BaseDataSource() {
     suspend fun getDetailsResult() =
-        apiInterface.getDetailsResult()
+        getResult { apiInterface.getDetailsResult() }
 }

@@ -8,8 +8,6 @@ import javax.inject.Inject
 
 class GetDetailsUseCase @Inject constructor(private val detailsRepository: DetailsRepository) {
 
-    //val details = execute()
-
     fun execute(): LiveData<Result<List<DetailsModel>>>{
         return detailsRepository.getDetailsResult()
     }

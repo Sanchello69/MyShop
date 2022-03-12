@@ -3,7 +3,7 @@ package com.vas.feature_product_details_screen.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.vas.feature_product_details_screen.data.local.dao.DetailsDao
-import com.vas.feature_product_details_screen.data.local.entities.DetailsModelLocal
+import com.vas.feature_product_details_screen.data.local.entity.DetailsModelLocal
 import com.vas.feature_product_details_screen.data.network.api.ApiDetailsHelper
 import com.vas.feature_product_details_screen.domain.model.DetailsModel
 import com.vas.feature_product_details_screen.domain.repository.DetailsRepository

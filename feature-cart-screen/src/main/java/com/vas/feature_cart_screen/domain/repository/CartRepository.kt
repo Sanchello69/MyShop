@@ -1,9 +1,11 @@
 package com.vas.feature_cart_screen.domain.repository
 
+import androidx.lifecycle.LiveData
+import com.vas.core.utils.Result
 import com.vas.feature_cart_screen.domain.model.CartModel
 
 interface CartRepository {
 
-    suspend fun getCartResult() : CartModel
+    fun getCartResult() : LiveData<Result<List<CartModel>>>
 
 }

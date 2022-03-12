@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.navigation.Navigation
 import com.vas.core.presentation.utils.Status
+import com.vas.core.utils.Result
 import com.vas.feature_cart_screen.R
 import com.vas.feature_cart_screen.databinding.FragmentMyCartBinding
 import com.vas.feature_cart_screen.di.CartComponentViewModel
@@ -61,22 +62,17 @@ class MyCartFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.getCart().observe(viewLifecycleOwner, Observer {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        Log.d("status", "SUCCESS")
-                        Log.d("status", "${it.data}")
+        viewModel.cart.observe(viewLifecycleOwner, Observer { result ->
+            when (result.status) {
+                Result.Status.SUCCESS -> {
 
-                        loadingUI(it.data!!)
-                    }
-                    Status.ERROR -> {
-                        Log.d("status", "ERROR ${it.message}")
-                    }
-                    Status.LOADING -> {
-                        Log.d("status",  "LOADING")
-                    }
+                    Log.d("status", "SUCCESS")
+
+                    result.data?.let { if (it.isNotEmpty()) loadingUI( it.last()) }
+
                 }
+                Result.Status.LOADING -> Log.d("status", "LOADING")
+                Result.Status.ERROR -> Log.d("status", "ERROR")
             }
         })
     }

@@ -54,15 +54,17 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
 
     // Room
-    implementation      "androidx.room:room-runtime:2.4.2"
+    implementation "androidx.room:room-runtime:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
-    implementation      "androidx.room:room-rxjava2:2.4.2"
+    implementation("androidx.room:room-ktx:2.4.2")
 
     implementation project(path: ':feature-main-screen')
     implementation project(path: ':feature-product-details-screen')
     implementation project(path: ':feature-cart-screen')
     implementation project(path: ':navigation')
     implementation project(path: ':feature-location-screen')
+
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
     implementation project(path: ':core')
 

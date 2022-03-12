@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.vas.feature_product_details_screen.data.local.entities.DetailsModelLocal
+import com.vas.feature_product_details_screen.data.local.entity.DetailsModelLocal
 
 @Dao
 interface DetailsDao {

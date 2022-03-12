@@ -1,12 +1,6 @@
-package com.vas.feature_product_details_screen.data.local.entities
+package com.vas.feature_product_details_screen.data.local.entity
 
 import androidx.room.*
-import com.google.gson.Gson
-
-import com.google.gson.reflect.TypeToken
-
-
-
 
 @Entity
 data class DetailsModelLocal(
@@ -40,15 +34,3 @@ data class DetailsModelLocal(
     //@TypeConverters(StringListToGsonConverter.class)
     val capacity: List<String>
 )
-
-object StringListToGsonConverter {
-    @TypeConverter
-    fun restoreList(listOfString: String?): List<String> {
-        return Gson().fromJson(listOfString, object : TypeToken<List<String?>?>() {}.type)
-    }
-
-    @TypeConverter
-    fun saveListOfString(listOfString: List<String?>?): String {
-        return Gson().toJson(listOfString)
-    }
-}
