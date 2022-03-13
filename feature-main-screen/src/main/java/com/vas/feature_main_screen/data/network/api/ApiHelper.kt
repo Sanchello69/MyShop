@@ -1,6 +1,9 @@
 package com.vas.feature_main_screen.data.network.api
 
-class ApiHelper (private val apiInterface: ApiInterface) {
+import com.vas.core.utils.BaseDataSource
+
+class ApiHelper (private val apiInterface: ApiInterface) : BaseDataSource(){
     suspend fun getMainResult() =
-        apiInterface.getMainResult()
+        getResult { apiInterface.getMainResult() }
+
 }

@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -85,6 +86,9 @@ dependencies {
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+
+    //analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.0'
 
     implementation project(path: ':core')
     implementation project(path: ':navigation')

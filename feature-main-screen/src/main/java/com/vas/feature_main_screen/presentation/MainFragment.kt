@@ -14,6 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.vas.feature_main_screen.databinding.FragmentMainBinding
 import com.vas.feature_main_screen.di.MainComponentViewModel
 import com.vas.feature_main_screen.domain.model.BestSeller
@@ -31,6 +34,8 @@ import kotlinx.android.synthetic.main.filter_layout.view.*
 import javax.inject.Inject
 
 class MainFragment : Fragment() {
+
+    private lateinit var analytics: FirebaseAnalytics
 
     @Inject
     lateinit var viewModelFactory: MainViewModelFactory
@@ -59,6 +64,8 @@ class MainFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
 
+        analytics = Firebase.analytics
+
         setupViewModel()
         setupUI()
         setupObservers()
@@ -67,8 +74,6 @@ class MainFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        //val apiHelper = ApiHelper(RetrofitClient.apiInterface)
-        //val viewModelFactory = MainViewModelFactory(apiHelper)
 
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(MainViewModel::class.java)
@@ -112,7 +117,7 @@ class MainFragment : Fragment() {
 
         binding.filter.brandSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                Toast.makeText(context, "Selected ${binding.filter.brandSpinner.selectedItem}", Toast.LENGTH_SHORT)
+                Log.d("filter", "Selected ${binding.filter.brandSpinner.selectedItem}")
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -129,7 +134,7 @@ class MainFragment : Fragment() {
 
         binding.filter.priceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                Toast.makeText(context, "Selected ${binding.filter.priceSpinner.selectedItem}", Toast.LENGTH_SHORT)
+                Log.d("filter", "Selected ${binding.filter.priceSpinner.selectedItem}")
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -146,7 +151,7 @@ class MainFragment : Fragment() {
 
         binding.filter.sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                Toast.makeText(context, "Selected ${binding.filter.sizeSpinner.selectedItem}", Toast.LENGTH_SHORT)
+                Log.d("filter", "Selected ${binding.filter.sizeSpinner.selectedItem}")
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -164,7 +169,10 @@ class MainFragment : Fragment() {
 
         adapterCategory.onClickListener = object : CategoryAdapter.OnCategoryClickListener{
             override fun onCategoryClick(category: String, position: Int) {
-                Toast.makeText(context, "Click $category", Toast.LENGTH_SHORT).show()
+
+                sendAnalytics(category, "Select category")
+
+                //Toast.makeText(context, "Click $category", Toast.LENGTH_SHORT).show()
                 adapterCategory.clickPosition = position
                 adapterCategory.notifyDataSetChanged()
             }
@@ -178,6 +186,9 @@ class MainFragment : Fragment() {
 
         adapterHotSales.onClickListener = object : HotSalesAdapter.OnHotSalesClickListener{
             override fun onBuyNowClick(homeStore: HomeStore) {
+
+                sendAnalytics(homeStore.title, "Hot sales")
+
                 Toast.makeText(context, "Click ${homeStore.title}", Toast.LENGTH_LONG).show()
             }
         }
@@ -196,6 +207,9 @@ class MainFragment : Fragment() {
             }
 
             override fun onItemClick(title: String) {
+
+                sendAnalytics(title, "Best seller")
+
                 bundle.putString("title", title)
                 navigate(NavCommand(
                     action = mainNavCommandProvider.toDetails.action,
@@ -214,5 +228,14 @@ class MainFragment : Fragment() {
         binding.locationImageView.setOnClickListener {
             navigate(mainNavCommandProvider.toMaps)
         }
+    }
+
+    private fun sendAnalytics(itemName: String, contentType: String) {
+        val bundle = Bundle()
+
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, itemName)
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, contentType)
+
+        analytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
     }
 }
